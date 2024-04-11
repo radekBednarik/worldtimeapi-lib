@@ -9,6 +9,11 @@
     "link": "cd dist && npm link && cd ..",
     "build": "rimraf ./dist && tsc"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com:radekBednarik/worldtimeapi-lib.git"
+  },
+  "homepage": "https://github.com/radekBednarik/worldtimeapi-lib",
   "keywords": [
     "worldtimeapi",
     "api",
