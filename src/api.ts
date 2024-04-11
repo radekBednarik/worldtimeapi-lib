@@ -1,3 +1,7 @@
+export type ReturnedData = Promise<
+  [string[] | number | Record<string, string | number> | undefined, boolean]
+>;
+
 async function call({
   baseUrl = "http://worldtimeapi.org/api",
   endpoint,
@@ -6,7 +10,7 @@ async function call({
   baseUrl?: string;
   endpoint?: string;
   options?: RequestInit;
-}) {
+}): ReturnedData {
   let response: Response | undefined = undefined;
 
   try {
@@ -32,7 +36,7 @@ async function call({
  *
  * @param [param0={}] params object
  * @param [param0.timezone] provide timezone value, as specififed here {@link https://worldtimeapi.org/pages/examples}
- * @returns [string[] | Record<string, string> | number, boolean ]
+ * @returns Promise<[string[] | number | Record<string, string | number> | undefined, boolean]>
  *
  * @example
  * ```ts
@@ -61,10 +65,10 @@ async function call({
  * Response error 404 will be returned, if you provide wrong/nonexisting `timezone` value.
  * Therefore it is best to first return all available timezones, and pick the need one from the array.
  * ```
- *
- *
  */
-export async function getTimezone({ timezone }: { timezone?: string } = {}) {
+export async function getTimezone({
+  timezone,
+}: { timezone?: string } = {}): ReturnedData {
   const tz = typeof timezone !== "undefined" ? timezone : "";
 
   const endpoint = `/timezone/${tz}`;
