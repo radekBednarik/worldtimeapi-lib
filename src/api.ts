@@ -27,6 +27,43 @@ async function call({
   }
 }
 
+/**
+ * Function which will call `http://worldtimeapi.org/api` and returns requested data.
+ *
+ * @param [param0={}] params object
+ * @param [param0.timezone] provide timezone value, as specififed here {@link https://worldtimeapi.org/pages/examples}
+ * @returns [string[] | Record<string, string> | number, boolean ]
+ *
+ * @example
+ * ```ts
+ * import {getTimezone} from "worldtimeapi-lib";
+ *
+ * // 1. example - return array with all available zones
+ *
+ * const [data, status] = await getTimezone();
+ *
+ * if (status) {
+ *    console.log(JSON.stringify(data));
+ * }
+ *
+ * // 2. example - return area data as string array
+ *
+ * const [data, status] = await getTimezone({timezone: "Europe"});
+ *
+ * // 3. example - return data object of type Record<string, string> of specific area location
+ *
+ * const [data, status] = await getTimezone({timezone: "Europe/Prague"});
+ * const [data, status] = await getTimezone({timezone: "America/Argentina/Salta"});
+ *
+ * Error handling:
+ *
+ * In case api call will return an error, then function always returns array `[response.status_number, false]`.
+ * Response error 404 will be returned, if you provide wrong/nonexisting `timezone` value.
+ * Therefore it is best to first return all available timezones, and pick the need one from the array.
+ * ```
+ *
+ *
+ */
 export async function getTimezone({ timezone }: { timezone?: string } = {}) {
   const tz = typeof timezone !== "undefined" ? timezone : "";
 

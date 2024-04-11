@@ -6,7 +6,8 @@
   "scripts": {
     "test": "rimraf ./dist && tsc && npx mocha",
     "lint": "eslint src --cache && tsc --noEmit --pretty",
-    "build": "tsc"
+    "link": "cd dist && npm link && cd ..",
+    "build": "rimraf ./dist && tsc"
   },
   "keywords": [
     "worldtimeapi",
