@@ -29,6 +29,7 @@ async function call({
 
 export async function getTimezone({ timezone }: { timezone?: string } = {}) {
   const tz = typeof timezone !== "undefined" ? timezone : "";
+
   const endpoint = `/timezone/${tz}`;
 
   const [data, status] = await call({ endpoint });
