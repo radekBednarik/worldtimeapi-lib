@@ -1,0 +1,7 @@
+node_modules
+.git
+src
+tests
+eslint.config.mjs
+package-lock.json
+tsconfig.json

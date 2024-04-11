@@ -1,4 +1,4 @@
-import { getTimezone } from "../dist/api.js";
+import { getTimezone } from "../dist/index.js";
 import { describe, it } from "mocha";
 import { expect } from "chai";
 
