@@ -1,3 +1,3 @@
-import { getTimezone } from "./api.js";
+import { getTimezone, getIpAddress } from "./api.js";
 
-export { getTimezone };
+export { getTimezone, getIpAddress };

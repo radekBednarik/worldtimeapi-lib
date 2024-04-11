@@ -81,3 +81,40 @@ export async function getTimezone({
 
   return [data, false];
 }
+
+/**
+ * This function calls /ip endpoint and returns data object for either automatically resolved IP, or specific IP, if provided.
+ * See examples.
+ *
+ * @param [param0={}] params
+ * @param [param0.ip] optional ipv4 value, e.g. 8.8.8.8
+ * @returns Promise<[string[] | number | Record<string, string | number> | undefined, boolean]>
+ *
+ * @example
+ *
+ * ```ts
+ * import {getIpAddress} from "worldtimeapi-lib";
+ *
+ * 1. example - no IP address is provided
+ * const [data, status] = await getIpAddress();
+ *
+ * if (status) {
+ *   console.log(JSON.stringify(data));
+ * }
+ *
+ * @. example - IP address is provided
+ * const [data, status] = await getIpAddress({ip: "8.8.8.8"});
+ * ```
+ */
+export async function getIpAddress({ ip }: { ip?: string } = {}): ReturnedData {
+  const _ip = typeof ip !== "undefined" ? ip : "";
+  const endpoint = `/ip/${_ip}`;
+
+  const [data, status] = await call({ endpoint });
+
+  if (status) {
+    return [data, true];
+  }
+
+  return [data, false];
+}

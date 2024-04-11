@@ -33,3 +33,23 @@ const [data, status] = await getTimezone({ timezone: "Europe" });
 ```ts
 const [data, status] = await getTimezone({ timezone: "Europe/Prague" });
 ```
+
+### Get data for IP address
+
+#### IP address is not provided
+
+```ts
+import { getIpAddress } from "worldtimeapi-lib";
+
+const [data, status] = await getIpAddress();
+
+if (status) {
+  console.log(JSON.stringify(data));
+}
+```
+
+#### IP address explicitly provided
+
+```ts
+const [data, status] = await getIpAddress({ ip: "8.8.8.8" });
+```
