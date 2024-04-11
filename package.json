@@ -24,7 +24,7 @@
   "author": "Radek Bednarik<radek.bednarik@tesena.com",
   "license": "MIT",
   "engines": {
-    "node": ">=21.0.0"
+    "node": ">=20.0.0"
   },
   "engineStrict": true,
   "devDependencies": {
